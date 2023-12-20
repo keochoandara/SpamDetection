@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Detection</title>
+</head>
+<body>
+    <h1>Spam Detection</h1>
+    <form method="POST" action="/predict">
+        <label for="message">Enter a message:</label><br>
+        <textarea required name="message" cols="50" rows="10" >{% if message %}{{ message }}{% endif %}</textarea><br>
+        <button type="submit">Predict</button>
+    </form>
+    {% if prediction %}
+    <p>Message: {% if message %}{{ message }}{% endif %}</p>
+        <p>Is:
+            {% if prediction == 'spam' %}
+                <span style="color: red;">Spam!<span>
+            {% else %}
+                <span style="color: green;">Not spam.<span>
+            {% endif %}
+        </p>
+    {% endif %}
+</body>
+</html>
